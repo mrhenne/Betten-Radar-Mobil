@@ -28,8 +28,163 @@
             --text-primary: rgba(255, 255, 255, 0.95);
             --text-secondary: rgba(255, 255, 255, 0.6);
             --text-muted: rgba(255, 255, 255, 0.4);
+            --bg-base: #0a0a0a;
             --safe-area-inset-top: env(safe-area-inset-top, 20px);
             --safe-area-inset-bottom: env(safe-area-inset-bottom, 20px);
+        }
+
+        body.light-mode {
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(0, 0, 0, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.9);
+            --text-primary: rgba(0, 0, 0, 0.9);
+            --text-secondary: rgba(0, 0, 0, 0.6);
+            --text-muted: rgba(0, 0, 0, 0.4);
+            --bg-base: #f0f2f5;
+            --helios-green-glow: rgba(126, 211, 33, 0.3);
+        }
+
+        body.light-mode {
+            background: var(--bg-base);
+        }
+
+        body.light-mode .bg-mesh {
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 20%, rgba(126, 211, 33, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0, 102, 204, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 40% 60% at 50% 50%, rgba(126, 211, 33, 0.1) 0%, transparent 50%);
+        }
+
+        body.light-mode .liquid-glass {
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        body.light-mode .liquid-glass-heavy {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+        }
+
+        body.light-mode .bottom-actions::before {
+            background: linear-gradient(to top, rgba(240, 242, 245, 0.98) 0%, rgba(240, 242, 245, 0.8) 70%, transparent 100%);
+        }
+
+        body.light-mode .stepper-btn {
+            background: rgba(0, 0, 0, 0.06);
+        }
+
+        body.light-mode .stepper-btn:active {
+            background: var(--helios-green);
+            color: #fff;
+        }
+
+        body.light-mode .field-group {
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        body.light-mode .station-time {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode .toast {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        body.light-mode .modal-input {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .notes-textarea {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .history-backdrop {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        body.light-mode .icon-btn {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-mode .zna-btn {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-mode .action-btn.secondary {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .iso-type-select {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .iso-type-select option {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: relative;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            border: none;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.92);
+        }
+
+        .theme-toggle .sun-icon,
+        .theme-toggle .moon-icon {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle .sun-icon {
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        .theme-toggle .moon-icon {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        body.light-mode .theme-toggle .sun-icon {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        body.light-mode .theme-toggle .moon-icon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
         }
 
         html, body {
@@ -1121,6 +1276,259 @@
             border-color: rgba(96, 165, 250, 0.3);
             color: #60a5fa;
         }
+
+        /* Drag Handle */
+        .drag-handle {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .drag-handle:active {
+            cursor: grabbing;
+            background: var(--helios-green);
+            color: #000;
+        }
+
+        body.light-mode .drag-handle {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        .station-card.dragging {
+            opacity: 0.5;
+            transform: scale(0.98);
+        }
+
+        .station-card.drag-over {
+            border: 2px dashed var(--helios-green) !important;
+        }
+
+        /* Inline Controls Row */
+        .station-controls-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 16px 16px;
+        }
+
+        .inline-stepper {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        body.light-mode .inline-stepper {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+
+        .inline-stepper-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0 6px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .inline-stepper-label.blue { color: #60a5fa; }
+        .inline-stepper-label.pink { color: #f472b6; }
+        .inline-stepper-label.amber { color: #fbbf24; }
+
+        .inline-stepper-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .inline-stepper-btn:active {
+            transform: scale(0.9);
+            background: var(--helios-green);
+            color: #000;
+        }
+
+        body.light-mode .inline-stepper-btn {
+            background: rgba(0, 0, 0, 0.06);
+        }
+
+        .inline-stepper-value {
+            width: 36px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-primary);
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+
+        /* Edit Station Name */
+        .edit-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .edit-btn:active {
+            transform: scale(0.9);
+            background: var(--helios-green);
+            color: #000;
+        }
+
+        body.light-mode .edit-btn {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .station-name-input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--helios-green);
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 4px 0;
+            outline: none;
+            width: 150px;
+        }
+
+        /* Phone Number */
+        .phone-badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+
+        .phone-badge a {
+            color: var(--helios-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        body.light-mode .phone-badge {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .phone-input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .phone-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .phone-input:focus {
+            border-color: var(--helios-green);
+        }
+
+        body.light-mode .phone-input {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Compact Station Header */
+        .station-header-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+        }
+
+        .station-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .station-name-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .station-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .station-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .expand-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .expand-btn:active {
+            transform: scale(0.9);
+        }
+
+        body.light-mode .expand-btn {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .station-card.expanded .expand-btn svg {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body>
@@ -1140,6 +1548,10 @@
                 </div>
             </div>
             <div class="header-actions">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Design wechseln">
+                    <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                </button>
                 <button class="icon-btn" onclick="openHistoryPanel()" title="Schicht-Historie">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </button>
@@ -1300,10 +1712,11 @@
             expandedStations: {},
             znaStatus: { type: 'normal', color: 'green', label: 'Normalbetrieb' },
             stations: [
-                { id: '1a', name: 'Station 1A', entl: 0, m: 0, w: 0, rooms: 0, isoType: 'Keine', isoCount: 0, lastCheck: '--:--', rawTimestamp: 0, notes: '' },
-                { id: 'zna_holding', name: 'ZNA Holding', entl: 0, m: 0, w: 0, rooms: 0, isoType: 'Keine', isoCount: 0, lastCheck: '--:--', rawTimestamp: 0, notes: '' }
+                { id: '1a', name: 'Station 1A', entl: 0, m: 0, w: 0, rooms: 0, isoType: 'Keine', isoCount: 0, lastCheck: '--:--', rawTimestamp: 0, notes: '', phone: '' },
+                { id: 'zna_holding', name: 'ZNA Holding', entl: 0, m: 0, w: 0, rooms: 0, isoType: 'Keine', isoCount: 0, lastCheck: '--:--', rawTimestamp: 0, notes: '', phone: '' }
             ],
-            shiftHistory: []
+            shiftHistory: [],
+            theme: 'dark'
         };
 
         // Load & Save
@@ -1312,7 +1725,13 @@
             if (saved) {
                 const parsed = JSON.parse(saved);
                 appState = { ...appState, ...parsed };
+                // Ensure new fields exist on old data
+                appState.stations.forEach(s => {
+                    if (!s.phone) s.phone = '';
+                    if (!s.notes) s.notes = '';
+                });
             }
+            applyTheme();
             updateDashboard();
             updateZNAUI();
             render();
@@ -1443,7 +1862,8 @@
                 entl: 0, m: 0, w: 0, rooms: 0,
                 isoType: 'Keine', isoCount: 0,
                 lastCheck: '--:--', rawTimestamp: 0,
-                notes: ''
+                notes: '',
+                phone: ''
             });
             
             closeAddModal();
@@ -1472,6 +1892,7 @@
                     s.isoCount = 0; s.isoType = 'Keine';
                     s.lastCheck = '--:--'; s.rawTimestamp = 0;
                     s.notes = '';
+                    // Keep phone numbers on reset
                 });
                 saveData();
                 render();
@@ -1524,71 +1945,130 @@
             appState.stations.forEach(s => {
                 const isCritical = Number(s.m) === 0 && Number(s.w) === 0 && Number(s.rooms) === 0;
                 const isExpanded = appState.expandedStations[s.id];
+                const isEditing = appState.editingStation === s.id;
                 
                 const card = document.createElement('div');
                 card.className = `station-card liquid-glass ${isCritical ? 'critical' : ''} ${isExpanded ? 'expanded' : ''}`;
+                card.setAttribute('draggable', 'true');
+                card.setAttribute('data-id', s.id);
+                
+                // Drag events
+                card.ondragstart = (e) => handleDragStart(e, s.id);
+                card.ondragend = handleDragEnd;
+                card.ondragover = handleDragOver;
+                card.ondrop = (e) => handleDrop(e, s.id);
+                card.ondragleave = handleDragLeave;
                 
                 card.innerHTML = `
-                    <div class="station-header" onclick="toggleStation('${s.id}')">
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <span class="station-name">${s.name}</span>
-                            ${isCritical ? '<span class="station-badge">Keine Kapazität</span>' : ''}
-                        </div>
-                        <div class="station-meta">
-                            <span class="station-time">${s.lastCheck}</span>
-                            <svg class="station-expand" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    <div class="station-header-row">
+                        <div class="drag-handle" title="Zum Verschieben ziehen">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
                             </svg>
                         </div>
+                        <div class="station-info">
+                            <div class="station-name-row">
+                                ${isEditing ? `
+                                    <input type="text" class="station-name-input" value="${s.name}" 
+                                        onblur="saveStationName('${s.id}', this.value)"
+                                        onkeypress="if(event.key==='Enter'){saveStationName('${s.id}', this.value)}"
+                                        autofocus>
+                                ` : `
+                                    <span class="station-name">${s.name}</span>
+                                `}
+                                <button class="edit-btn" onclick="event.stopPropagation(); ${isEditing ? `saveStationName('${s.id}')` : `startEditingStation('${s.id}')`}" title="Namen bearbeiten">
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        ${isEditing ? 
+                                            '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>' :
+                                            '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>'
+                                        }
+                                    </svg>
+                                </button>
+                                ${isCritical ? '<span class="station-badge">Keine Kapazität</span>' : ''}
+                            </div>
+                            <div class="station-meta-row">
+                                <span class="station-time">${s.lastCheck}</span>
+                                ${s.phone ? `<span class="phone-badge">📞 <a href="tel:${s.phone}">${s.phone}</a></span>` : ''}
+                            </div>
+                        </div>
+                        <div class="station-actions">
+                            <button class="expand-btn" onclick="toggleStation('${s.id}')" title="Details">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
+                    
+                    <div class="station-controls-row">
+                        <div class="inline-stepper">
+                            <span class="inline-stepper-label blue">M</span>
+                            <button class="inline-stepper-btn" onclick="stepVal('${s.id}', 'm', -1)">−</button>
+                            <input type="number" class="inline-stepper-value" value="${s.m}" 
+                                onchange="updateVal('${s.id}', 'm', this.value)" style="color: #60a5fa;">
+                            <button class="inline-stepper-btn" onclick="stepVal('${s.id}', 'm', 1)">+</button>
+                        </div>
+                        <div class="inline-stepper">
+                            <span class="inline-stepper-label pink">W</span>
+                            <button class="inline-stepper-btn" onclick="stepVal('${s.id}', 'w', -1)">−</button>
+                            <input type="number" class="inline-stepper-value" value="${s.w}" 
+                                onchange="updateVal('${s.id}', 'w', this.value)" style="color: #f472b6;">
+                            <button class="inline-stepper-btn" onclick="stepVal('${s.id}', 'w', 1)">+</button>
+                        </div>
+                        <div class="inline-stepper">
+                            <span class="inline-stepper-label amber">Z</span>
+                            <button class="inline-stepper-btn" onclick="stepVal('${s.id}', 'rooms', -1)">−</button>
+                            <input type="number" class="inline-stepper-value" value="${s.rooms}" 
+                                onchange="updateVal('${s.id}', 'rooms', this.value)" style="color: #fbbf24;">
+                            <button class="inline-stepper-btn" onclick="stepVal('${s.id}', 'rooms', 1)">+</button>
+                        </div>
+                    </div>
+                    
                     <div class="station-body">
                         <div class="field-grid">
                             <div class="field-group">
-                                <span class="field-label">Bett (M)</span>
-                                <div class="stepper">
-                                    <button class="stepper-btn" onclick="event.stopPropagation(); stepVal('${s.id}', 'm', -1)">−</button>
-                                    <input type="number" class="stepper-value blue" value="${s.m}" onchange="updateVal('${s.id}', 'm', this.value)" onclick="event.stopPropagation()">
-                                    <button class="stepper-btn" onclick="event.stopPropagation(); stepVal('${s.id}', 'm', 1)">+</button>
-                                </div>
-                            </div>
-                            <div class="field-group">
-                                <span class="field-label">Bett (W)</span>
-                                <div class="stepper">
-                                    <button class="stepper-btn" onclick="event.stopPropagation(); stepVal('${s.id}', 'w', -1)">−</button>
-                                    <input type="number" class="stepper-value pink" value="${s.w}" onchange="updateVal('${s.id}', 'w', this.value)" onclick="event.stopPropagation()">
-                                    <button class="stepper-btn" onclick="event.stopPropagation(); stepVal('${s.id}', 'w', 1)">+</button>
-                                </div>
-                            </div>
-                            <div class="field-group">
-                                <span class="field-label">Zimmer</span>
-                                <div class="stepper">
-                                    <button class="stepper-btn" onclick="event.stopPropagation(); stepVal('${s.id}', 'rooms', -1)">−</button>
-                                    <input type="number" class="stepper-value amber" value="${s.rooms}" onchange="updateVal('${s.id}', 'rooms', this.value)" onclick="event.stopPropagation()">
-                                    <button class="stepper-btn" onclick="event.stopPropagation(); stepVal('${s.id}', 'rooms', 1)">+</button>
-                                </div>
-                            </div>
-                            <div class="field-group">
                                 <span class="field-label">Entlassungen</span>
                                 <div class="stepper">
-                                    <button class="stepper-btn" onclick="event.stopPropagation(); stepVal('${s.id}', 'entl', -1)">−</button>
-                                    <input type="number" class="stepper-value green" value="${s.entl}" onchange="updateVal('${s.id}', 'entl', this.value)" onclick="event.stopPropagation()">
-                                    <button class="stepper-btn" onclick="event.stopPropagation(); stepVal('${s.id}', 'entl', 1)">+</button>
+                                    <button class="stepper-btn" onclick="stepVal('${s.id}', 'entl', -1)">−</button>
+                                    <input type="number" class="stepper-value green" value="${s.entl}" onchange="updateVal('${s.id}', 'entl', this.value)">
+                                    <button class="stepper-btn" onclick="stepVal('${s.id}', 'entl', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="field-group">
+                                <span class="field-label">ISO Plätze</span>
+                                <div class="stepper">
+                                    <button class="stepper-btn" onclick="stepVal('${s.id}', 'isoCount', -1)">−</button>
+                                    <input type="number" class="stepper-value amber" value="${s.isoCount}" onchange="updateVal('${s.id}', 'isoCount', this.value)">
+                                    <button class="stepper-btn" onclick="stepVal('${s.id}', 'isoCount', 1)">+</button>
                                 </div>
                             </div>
                         </div>
-                        <button class="check-btn" onclick="event.stopPropagation(); markChecked('${s.id}')">
+                        <div class="field-group" style="margin-top: 12px;">
+                            <span class="field-label">Isolation Typ</span>
+                            <select class="iso-type-select" style="width: 100%;" onchange="updateVal('${s.id}', 'isoType', this.value)">
+                                ${['Keine', 'MRSA', 'Noro', 'Influenza', 'Corona', 'Andere'].map(t => 
+                                    `<option ${s.isoType === t ? 'selected' : ''}>${t}</option>`
+                                ).join('')}
+                            </select>
+                        </div>
+                        <div class="field-group" style="margin-top: 12px;">
+                            <span class="field-label">📞 Telefonnummer</span>
+                            <input type="tel" class="phone-input" placeholder="z.B. 0203-546-1234" 
+                                value="${s.phone || ''}" 
+                                onchange="updatePhone('${s.id}', this.value)">
+                        </div>
+                        <div class="notes-section" style="border: none; padding-top: 0; margin-top: 12px;">
+                            <span class="field-label">📝 Notizen</span>
+                            <textarea class="notes-textarea" placeholder="Besonderheiten, Hinweise..." 
+                                onchange="updateNotes('${s.id}', this.value)">${s.notes || ''}</textarea>
+                        </div>
+                        <button class="check-btn" onclick="markChecked('${s.id}')">
                             <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                             </svg>
                             Jetzt checken
                         </button>
-                        <div class="notes-section">
-                            <span class="field-label">📝 Notizen</span>
-                            <textarea class="notes-textarea" placeholder="Besonderheiten, Hinweise..." 
-                                onclick="event.stopPropagation()" 
-                                onchange="updateNotes('${s.id}', this.value)">${s.notes || ''}</textarea>
-                        </div>
-                        <button class="delete-btn" onclick="event.stopPropagation(); deleteStation('${s.id}')">
+                        <button class="delete-btn" onclick="deleteStation('${s.id}')">
                             <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                             </svg>
@@ -1627,7 +2107,10 @@
                 
                 card.innerHTML = `
                     <div class="quick-card-header">
-                        <span class="quick-card-title">${s.name}</span>
+                        <div>
+                            <span class="quick-card-title">${s.name}</span>
+                            ${s.phone ? `<div class="phone-badge" style="margin-top: 6px; display: inline-flex;">📞 <a href="tel:${s.phone}">${s.phone}</a></div>` : ''}
+                        </div>
                         <span class="quick-card-time">${s.lastCheck}</span>
                     </div>
                     <div class="quick-stats">${statsHtml}</div>
@@ -1705,6 +2188,104 @@
                 saveData();
             }
         };
+
+        // Phone
+        window.updatePhone = function(id, phone) {
+            const station = appState.stations.find(s => s.id === id);
+            if (station) {
+                station.phone = phone;
+                saveData();
+            }
+        };
+
+        // Edit Station Name
+        window.startEditingStation = function(id) {
+            appState.editingStation = id;
+            render();
+            // Focus the input after render
+            setTimeout(() => {
+                const input = document.querySelector('.station-name-input');
+                if (input) {
+                    input.focus();
+                    input.select();
+                }
+            }, 50);
+        };
+
+        window.saveStationName = function(id, newName) {
+            const station = appState.stations.find(s => s.id === id);
+            if (station && newName && newName.trim()) {
+                station.name = newName.trim();
+            }
+            appState.editingStation = null;
+            saveData();
+            render();
+            showToast('Name gespeichert');
+        };
+
+        // Drag and Drop
+        let draggedId = null;
+
+        window.handleDragStart = function(e, id) {
+            draggedId = id;
+            e.dataTransfer.effectAllowed = 'move';
+            e.currentTarget.classList.add('dragging');
+        };
+
+        window.handleDragEnd = function(e) {
+            e.currentTarget.classList.remove('dragging');
+            document.querySelectorAll('.station-card').forEach(card => {
+                card.classList.remove('drag-over');
+            });
+            draggedId = null;
+        };
+
+        window.handleDragOver = function(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            const card = e.currentTarget;
+            if (!card.classList.contains('dragging')) {
+                card.classList.add('drag-over');
+            }
+        };
+
+        window.handleDragLeave = function(e) {
+            e.currentTarget.classList.remove('drag-over');
+        };
+
+        window.handleDrop = function(e, targetId) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+            
+            if (draggedId === targetId || !draggedId) return;
+            
+            const draggedIdx = appState.stations.findIndex(s => s.id === draggedId);
+            const targetIdx = appState.stations.findIndex(s => s.id === targetId);
+            
+            if (draggedIdx === -1 || targetIdx === -1) return;
+            
+            const [movedItem] = appState.stations.splice(draggedIdx, 1);
+            appState.stations.splice(targetIdx, 0, movedItem);
+            
+            saveData();
+            render();
+            showToast('Station verschoben');
+        };
+
+        // Theme Toggle
+        window.toggleTheme = function() {
+            const isLight = document.body.classList.toggle('light-mode');
+            appState.theme = isLight ? 'light' : 'dark';
+            saveData();
+        };
+
+        function applyTheme() {
+            if (appState.theme === 'light') {
+                document.body.classList.add('light-mode');
+            } else {
+                document.body.classList.remove('light-mode');
+            }
+        }
 
         // Shift History
         window.openHistoryPanel = function() {
@@ -1813,7 +2394,9 @@
             appState.stations.forEach(s => {
                 const free = (Number(s.m)||0) + (Number(s.w)||0) + (Number(s.rooms)||0);
                 if(free > 0 || (Number(s.isoCount)||0) > 0) {
-                    text += `${s.name}: M:${s.m} | W:${s.w} | Z:${s.rooms}`;
+                    text += `${s.name}`;
+                    if(s.phone) text += ` (📞 ${s.phone})`;
+                    text += `: M:${s.m} | W:${s.w} | Z:${s.rooms}`;
                     if(s.isoCount > 0) text += ` | ISO:${s.isoCount}(${s.isoType})`;
                     text += ` (${s.lastCheck})`;
                     if(s.notes) text += `\n   📝 ${s.notes}`;
